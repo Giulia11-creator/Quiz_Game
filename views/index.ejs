@@ -1,0 +1,41 @@
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body style="background-color:rgb(67, 92, 114)">
+<h1>La Classifica</h1>
+    <hr>
+
+    <% if(player!=null) { %>
+        <table class="Tabella">
+            <tr>
+                <th class="intestazione">id</th>
+                <th class="intestazione">Nickname </th>
+                <th class="intestazione">Points</th>
+            </tr>
+            <% player.forEach(function(item){ %>
+                <tr>
+                    <td>
+                        <%= item.id%>
+                    </td>
+                    <td>
+                        <%= item.nickname %>
+                    </td>
+                    <td>
+                        <%= item.points%>
+                    </td>
+
+
+                </tr>
+                <% }) %>
+        </table>
+        <% } %>
+
+
+</body>
+
+</html>

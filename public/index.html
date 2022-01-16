@@ -1,0 +1,68 @@
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body style="background-color:rgb(67, 92, 114)">
+
+
+    <div align="center">
+        <form action="Quiz.html" method="GET">
+            <div class="quiz-container" id="quiz">
+                <h1>Quizstorm</h1>
+
+                <div class="Logo">
+                    <img src="img/Logo.png" alt="Mio Logo" width="300px" height="350spx">
+                </div>
+
+
+                <p>Inserisci il tuo nickname per iniziare il gioco</p>
+
+                <table class="tabella-centrata">
+                    <tr>
+                        <th>Nickname : </th>
+                        <td><input class="textField" type="text" id="name"
+                                placeholder="Scrivi il tuo Nickname per iniziare a giocare" onblur="getVal()"></td>
+                    </tr>
+                    <tr>
+                        <th><input class="mioPulsante" type="submit" name="submit" value="Gioca" /></th>
+                        <td> <input class="mioPulsante" type="reset" value="Cancella" /></td>
+                    </tr>
+                </table>
+
+
+
+                <script>
+                    function getVal() {
+                        var x = document.getElementById("name").value;
+                        console.log(x);
+                        window.localStorage.setItem("name", x);
+
+                    }
+                </script>
+            </div>
+
+        </form>
+    </div>
+
+    <div align="center">
+        <form action="/getdetails" method="GET">
+
+
+            <input class="mioPulsante" type="submit" id="submitdef" name="submitable"
+                value="Visualizza la classifica" 
+            />
+
+
+        </form>
+    </div>
+
+
+
+
+</body>
+
+</html>

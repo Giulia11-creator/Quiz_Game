@@ -59,7 +59,7 @@ app.get("/getdetails", function (req, res) {
         } else {
             res.render("index", { player: playersGame })
         }
-    }).sort({ "points": -1 });
+    }).sort({ "points": -1 }).collation({locale:"en_US", numericOrdering:true});
 })
 
 io.on('connection', function (socket) {

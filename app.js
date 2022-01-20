@@ -64,7 +64,7 @@ app.get("/getdetails", function (req, res) {
 
 io.on('connection', function (socket) {
 
-    console.log('Nuovo visitatore connnesso!');
+    console.log('Nuovo visitatore connesso!');
     socket.on('disconnect', () => {
         console.log('Visitatore disconnesso');
       });

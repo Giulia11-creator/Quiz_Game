@@ -72,7 +72,11 @@ button,.mioPulsante{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  
 }
-
+.mioPulsante:hover
+{
+background-image:none;
+background-color:#ff9d00;
+}
 
 p{
     text-align: center;

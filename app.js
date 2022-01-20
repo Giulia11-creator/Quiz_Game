@@ -1,9 +1,10 @@
 const express = require("express");
-const app = express();
-const http = require("http");
-const server = http.createServer(app);
-const { Server } = require("socket.io"); //Commento
-const io = new Server(server);
+const app = express(); //express app
+const http = require("http"); 
+const server = http.createServer(app); //l'app viene passata al server http
+const { Server } = require("socket.io"); 
+const io = new Server(server); //il server http viene passato al socket.io
+const port = 3000; //Porta del server
 var path = require('path');
 var bodyParser = require('body-parser');
 const mongoose = require("mongoose");
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect("mongodb+srv://Giulia:Giulia11@clusterquiz.rzwau.mongodb.net/test", { useUnifiedTopology: true, useNewUrlParser: true });
 
-const schema = new mongoose.Schema({
+const schema = new mongoose.Schema({ //Schema dei dati all'interno della collection
     nickname: String,
     points: String
 }
@@ -24,7 +25,7 @@ const Model = mongoose.model("players", schema);
 
 console.clear();
 
-const port = 3000;
+
 
 app.use(express.static(__dirname + "/public"));
 
@@ -37,7 +38,7 @@ app.get("/Quiz", (req, res) => {
 });
 
 
-app.post('/post-feedback', function (req, res) {
+app.post('/post-feedback', function (req, res) { //Inserimento dei dati nel db
 
     let newPlayer = new Model({
 
@@ -52,7 +53,7 @@ app.post('/post-feedback', function (req, res) {
 
 });
 
-app.get("/getdetails", function (req, res) {
+app.get("/getdetails", function (req, res) { //Stampa dei dati contenuti nel db
     Model.find({}, function (err, playersGame) {
         if (err) {
             console.log(err);
@@ -60,9 +61,9 @@ app.get("/getdetails", function (req, res) {
             res.render("index", { player: playersGame })
         }
     }).sort({ "points": -1 }).collation({locale:"en_US", numericOrdering:true});
-})
+});
 
-io.on('connection', function (socket) {
+io.on('connection', function (socket) {    //connessione del socket
 
     console.log('Nuovo visitatore connesso!');
     socket.on('disconnect', () => {

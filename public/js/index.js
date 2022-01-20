@@ -101,6 +101,7 @@ const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitButton = document.getElementById('submit');
+const nDomanda = document.getElementById('nDomanda');
 let domandaCorrente = 0;
 let punteggio = 0;
 
@@ -119,6 +120,7 @@ function CaricaQuiz() {
     d_text.innerText = domandaVisualizzata.d;
     document.getElementById("submitdef").disabled = true;
     document.getElementById("nickname").value=nick;
+    nDomanda.innerText=domandaCorrente+"/"+(quizDom.length-1);
 
 
 }

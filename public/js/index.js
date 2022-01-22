@@ -1,5 +1,5 @@
 
-const quizDom = [
+const quizDom = [  //Vettore con le domande
 
     {
         domanda: "Qual è la capitale dell'Italia?",
@@ -108,7 +108,7 @@ let punteggio = 0;
 
 CaricaQuiz();
 
-function CaricaQuiz() {
+function CaricaQuiz() { //Caricamento della domanda e delle possibili opzioni
 
     deseleziona();
     const domandaVisualizzata = quizDom[domandaCorrente];
@@ -119,20 +119,20 @@ function CaricaQuiz() {
     c_text.innerText = domandaVisualizzata.c;
     d_text.innerText = domandaVisualizzata.d;
     document.getElementById("submitdef").disabled = true;
-    document.getElementById("nickname").value=nick;
-    nDomanda.innerText=domandaCorrente+"/"+(quizDom.length-1);
+    document.getElementById("nickname").value=nick; //nickname del giocatore
+    nDomanda.innerText=domandaCorrente+"/"+(quizDom.length-1); //Numero domanda in corso
 
 
 }
 
-function deseleziona() {
+function deseleziona() { //Deseleziona tutte le opzioni
 
     answerEls.forEach(answerEl => answerEl.checked = false)
 
 }
 
 
-function Seleziona_una_riposta() {
+function Seleziona_una_riposta() { //Funzione che salva la risposta scelta dal giocatore
     let answer;
 
     answerEls.forEach(answerEl => {
@@ -146,12 +146,12 @@ function Seleziona_una_riposta() {
     return answer;
 }
 
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', () => { //Pulsante di conferma per la risposta
 
     const answer = Seleziona_una_riposta();
     if (answer) {
 
-        if (answer === quizDom[domandaCorrente].correct) {
+        if (answer === quizDom[domandaCorrente].correct) { //Controllo della risposta inserita dell'utente
 
             punteggio += 50;
             document.getElementById("points").value=punteggio;
@@ -167,7 +167,7 @@ submitButton.addEventListener('click', () => {
         }
         else {
 
-            document.getElementById("submitdef").disabled = false;
+            document.getElementById("submitdef").disabled = false; //Una volta finite le riposte viene abilitato il pulsante per terminare il quiz
             
             
         }
